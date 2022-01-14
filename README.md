@@ -2,7 +2,7 @@
 A Discord bot that may save your day by predicting it.
 
 -To Invite the bot to your server directly use this link:
---https://discord.com/api/oauth2/authorize?client_id=931379752453963827&permissions=0&scope=bot
+- https://discord.com/api/oauth2/authorize?client_id=931379752453963827&permissions=0&scope=bot
 
 -To make a copy of the bot,
 1. Create a Application in discords developer portal.
