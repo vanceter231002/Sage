@@ -8,7 +8,7 @@ from discord.ext import commands
 from tabulate import tabulate
 
 load_dotenv()
-TOKEN=os.getenv('DISCORD_TOKEN')
+TOKEN=os.getenv('DISCORD_TOKEN')#getting discord token from .env file
 
 bot=commands.Bot(command_prefix="!")
 
