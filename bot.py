@@ -32,30 +32,18 @@ async def nine_nine(ctx):
 
 
 #command created to stimulate rolling of dice
-@bot.command(name="roll_dice", help="takes the number of die and the number of sides as arguments and rolls the dice")
+@bot.command(name="roll_dice", help="(!roll_dice {number_of_die} {number_of_sides}) to roll dice")
+
 async def roll_dice(ctx,number_of_dice: int ,number_of_sides: int):
     response=""
     for i in range(number_of_dice):
         rand_int=random.choice(list(range(1,number_of_sides+1)))
         response+=str(rand_int)+" "  
     await ctx.send(response)
+    
+#a command to find horoscope for today based on zodiac sign
+@bot.command(name="horoscope",help="(!horoscope {Zodiac Sign}) for your horoscope of today")
 
-@bot.command(name="create_channel",help="creates a new channel in the server")
-@commands.has_role('admin')
-@bot.event
-async def on_command_error(ctx,error):
-    if isinstance(error,commands.errors.CheckFailure):
-        await ctx.send("You do not have the correct role for this command.")
-async def create_channel(ctx,channel_name: str):
-    guild=ctx.guild
-    existing_channel=discord.utils.get(guild.channels,name=channel_name)
-    if not existing_channel:
-        print(f"creating a new channel: {channel_name}")
-        await guild.create_text_channel(channel_name)
-    else:
-        await ctx.send("Channel with the same name already present")
-
-@bot.command(name="horoscope",help="takes your zodaic sign as argument and provides you with todays horoscope")
 async def horoscope(ctx,zodiac_sign):
     zodiac_dictionary={"aries":1,"taurus":2,"gemini":3,"cancer":4,"leo":5,"virgo":6,"libra":7,"scorpio":8,
                        "sagittarius":9,"capricon":10,"aquarius":11,"pisces":12}
@@ -73,8 +61,10 @@ async def horoscope(ctx,zodiac_sign):
             break
         except:
             pass
+        
+#command created to give a list of top 10 movies sorted by popularity from imdb
+@bot.command(name="popular_movies",help="(!popular_movies) for listing the top 10 movies in imdb by popularity")
 
-@bot.command(name="popular_movies",help="lists the top 10 movies in imdb by popularity")
 async def movies(ctx):
     url="https://www.imdb.com/search/title/?groups=top_250"
     page=requests.get(url)
@@ -90,8 +80,8 @@ async def movies(ctx):
     final_string=tabulate(data,headers=head,tablefmt="grid")
     final_string="`"+final_string+"`"
     await ctx.send(final_string)
+    
 bot.run(TOKEN)
-
 
 
 
