@@ -23,7 +23,7 @@ async def on_ready():
 
 async def horoscope(ctx,zodiac_sign):
     zodiac_dictionary={"aries":1,"taurus":2,"gemini":3,"cancer":4,"leo":5,"virgo":6,"libra":7,"scorpio":8,
-                       "sagittarius":9,"capricon":10,"aquarius":11,"pisces":12}
+                       "sagittarius":9,"capricorn":10,"aquarius":11,"pisces":12}
     url=f"https://www.horoscope.com/us/horoscopes/general/horoscope-general-daily-today.aspx?sign={zodiac_dictionary[zodiac_sign.lower()]}"
     page=requests.get(url)
     soup=BeautifulSoup(page.content,"html.parser")
