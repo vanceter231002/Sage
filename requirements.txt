@@ -1,0 +1,5 @@
+bs4
+discord
+python-dotenv
+tabulate
+requests
